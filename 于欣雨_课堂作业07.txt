@@ -1,0 +1,33 @@
+C:\xampp\mysql\bin>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 300
+Server version: 10.4.11-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create user 'yu'@'%'identified by'123';
+Query OK, 0 rows affected (0.011 sec)
+
+MariaDB [mysql]> grant select,delete,update,index,insert on friend.acquaintance to 'yu';
+Query OK, 0 rows affected (0.012 sec)
+
+MariaDB [(none)]> use mysql;
+Database changed
+MariaDB [mysql]> select host,user,password from user;
++-----------+------+-------------------------------------------+
+| Host      | User | Password                                  |
++-----------+------+-------------------------------------------+
+| localhost | root |                                           |
+| %         | yu   |                                           |
+| 127.0.0.1 | root |                                           |
+| ::1       | root |                                           |
+| localhost | pma  |                                           |
+| localhost | yxy  | *23AE809DDACAF96AF0FD78ED04B6A265E05AA257 |
++-----------+------+-------------------------------------------+
+6 rows in set (0.003 sec)
+
+MariaDB [mysql]> drop user 'yu'@'%';
+Query OK, 0 rows affected (0.011 sec)
